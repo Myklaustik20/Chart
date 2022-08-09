@@ -1,28 +1,18 @@
-const parentBody = document.querySelector(".content-body"),
- charts = document.querySelectorAll(".chart"),
- bodyHead = document.querySelector(".body-head")
- 
-charts.forEach(function(chart) {
-   chart.addEventListener("mouseover", function(e) {
-      const box = e.currentTarget.classList;
+let charts = document.querySelectorAll(".chart")
+let bodyHead = document.querySelectorAll(".body-head")
 
-      if(box.contains("selector")) {
-         bodyHead.style.display = "block"
-      }
-      
-      exitChart(chart)
-   })
-   // chart.addEventListener("mouseleave", function(e) {
-   //    const box = (e.currentTarget.classList);
+let converted_chart = Array.from(charts)
+let body_head = Array.from(bodyHead)
 
-   //    if(box.contains("selector")) {
-   //       bodyHead.style.display = "none"
-   //    }
-   // })
+converted_chart.forEach(function(chart){
+  chart.addEventListener('mouseover', function(e){
+     let arr = converted_chart.indexOf(chart)
+     body_head[arr].classList.add('show')
+     
+  })
+
+  chart.addEventListener('mouseout',function(e){
+     let arr = converted_chart.indexOf(chart)
+     body_head[arr].classList.remove('show')
+  })
 })
-
-function exitChart(chart) {
-   chart.addEventListener("mouseout", ()=> {
-      bodyHead.style.display = "none";
-   })
-}

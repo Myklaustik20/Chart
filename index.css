@@ -226,3 +226,7 @@ body {
     background-color: #CD6155;
 }
 
+.show {
+    display: block;
+    overflow: hidden;
+}
